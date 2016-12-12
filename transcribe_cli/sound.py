@@ -24,7 +24,7 @@ class SoundPlayer(object):
         start_at = max(0, start_at - 0.1)  # start 0.1 second before
         args = list(map(str, ["play", sound_file,
                     "trim", start_at, length,
-                    speed_action, speed,
+                    speed_action, "-s", speed,  # TODO: -s might just make sense for tempo
                     "pad", "0", "0.8",
                     "repeat", "-"]))
         logging.debug("Starting play process with args: {}".format(args))
