@@ -33,7 +33,7 @@ class SoundPlayer(object):
         self._process = p
         print("Started sound process {}".format(self._process.pid))
         # Register for process destruction, if the caller forgets to call stop
-        #atexit.register(self._kill_process)
+        atexit.register(self._kill_process)
 
     def stop(self):
         self._kill_process()

@@ -1,21 +1,9 @@
 # Trancsribe CLI
 
-Transcribe audio text on the command line
+Command line interface for transcribing text, e.g. to aid understanding of a foreign language. 
 
+Requirements:
+ - Currently (while prototyping) requires sox: http://sox.sourceforge.net
 
-# Installation
-
-If you don't use `pipsi`, you're missing out.
-Here are [installation instructions](https://github.com/mitsuhiko/pipsi#readme).
-
-Simply run:
-
-    $ pipsi install .
-
-
-# Usage
-
-To use it:
-
-    $ transcribe-cli --help
+   brew install sox
 

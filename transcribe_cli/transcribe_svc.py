@@ -48,7 +48,7 @@ class TranscribeService(object):
         if self.part is None:
             self.part = self.next_part(metafile, length)
 
-        # TODO: the sound player contains logic it shouldn't need to know
+        # TODO: the sound player contains logic that should rather be here
         self.sound_player.set_part(path, self.part, length, speed, nopitch)
         print("Progress: {}".format(float(self.sound_player.part) /
               self.sound_player.parts))
@@ -63,7 +63,6 @@ class TranscribeService(object):
         new_content = self.file_service.edit_temp_file(bytes("{}".format(last_line),
                                                        encoding="UTF-8"))
         # Filter out comment lines:
-        os.linesep
         filtered = os.linesep.join(line for line in new_content.splitlines()
                                    if not line.startswith("#"))
         filtered = filtered.strip()
