@@ -8,13 +8,11 @@ import logging
 
 class SoundPlayer(object):
     def __init__(self, logger=None):
-        self.parts = None
         self.part = None
         self._process = None
         self.start_at = None
         self.end_at = None
         self.total_length = None
-        self.part_length = None
         self.speed = None
         self.nopitch = None
         self.logger = logger or logging.getLogger(__name__)
@@ -50,17 +48,3 @@ class SoundPlayer(object):
             retcode = self._process.wait()  # TODO: Unix only
             print("Done waiting for sound process. retcode={}".format(retcode))
             self._process = None
-
-    def play_part(self):
-        self.play(self.sound_file, self.speed, self.start_at, self.part_length, self.nopitch)
-
-    def set_part(self, sound_file, part, part_length, speed, nopitch):
-        self.sound_file = sound_file
-        self.total_length = self.get_length(sound_file)
-        self.part = part
-        self.parts = math.ceil(self.total_length / part_length)
-        self.part_length = part_length
-        self.start_at = int((part - 1) * self.part_length)
-        self.end_at = self.start_at + self.part_length
-        self.speed = speed
-        self.nopitch = nopitch
